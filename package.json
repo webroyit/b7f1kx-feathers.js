@@ -4,7 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
+    "server": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +14,8 @@
     "@feathersjs/feathers": "^4.3.4",
     "@feathersjs/socketio": "^4.3.4",
     "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
   }
 }
