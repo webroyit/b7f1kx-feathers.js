@@ -51,3 +51,16 @@ function displayIdea(idea){
         </div>
     `;
 }
+
+async function init(){
+    // find the list of ideas
+    const ideas = await app.service('ideas').find();
+
+    // add exisiting ideas to the list
+    ideas.forEach(displayIdea);
+
+    // listen for a new idea and display it in realtime
+    app.service('ideas').on('created', displayIdea);
+}
+
+init();
