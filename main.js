@@ -5,4 +5,30 @@ const socket = io('http://localhost:3000');
 const app = feathers();
 
 // Allow socket.io to communicate to the server
-app.configure(feathers.socket.io(socket));
+app.configure(feathers.socketio(socket));
+
+document.getElementById('form').addEventListener('submit', submitIdea);
+
+async function submitIdea(e){
+    // stop the page from reloading
+    e.preventDefault();
+
+    const name = document.getElementById('idea-name');
+    const text = document.getElementById('idea-text');
+    const tech = document.getElementById('idea-tech');
+    const viewer = document.getElementById('idea-viewer');
+    
+    // create a new idea
+    app.service('ideas').create({
+        name: name.value,
+        text: text.value,
+        tech: tech.value,
+        viewer: viewer.value,
+    });
+
+    // reset the inputs after submiting
+    name.value = "";
+    text.value = "";
+    tech.value = "";
+    viewer.value = "";
+};
