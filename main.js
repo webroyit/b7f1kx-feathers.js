@@ -32,3 +32,22 @@ async function submitIdea(e){
     tech.value = "";
     viewer.value = "";
 };
+
+function displayIdea(idea){
+    // doing '=' will replace the idea
+    // doing '+=' will add another idea
+    document.getElementById('ideas').innerHTML += `
+        <div class="card bg-secondary my-3">
+            <div class="card-body">
+                <h3>${idea.name}</h3>
+                <p class="lead">
+                    ${idea.text} with (${idea.tech})
+                <br />
+                <em>Submitted by ${idea.viewer}</em>
+                <br />
+                <small>${idea.time}</small>
+                </p>
+            </div>
+        </div>
+    `;
+}
